@@ -11,7 +11,7 @@ my_dict = {
 print(my_dict["tuple"][-1])
 my_dict["list"].append("add_element")
 my_dict["list"].pop(1)
-my_dict["dict"]["i'm a tuple"] = 7
+my_dict["dict"][("i am a tuple",)] = 7
 my_dict["dict"].pop("two")
 my_dict["set"].add(30)
 my_dict["set"].remove(5)
