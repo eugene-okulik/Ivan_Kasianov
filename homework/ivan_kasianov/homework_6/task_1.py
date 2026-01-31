@@ -1,9 +1,8 @@
 text = "Etiam tincidunt neque erat, quis molestie enim imperdiet vel. Integer urna nisl, facilisis vitae semper at, dignissim vitae libero"
 
-new_text = text.split()
 text_result = []
 
-for i in new_text:
+for i in text.split():
     if "." in i or "," in i:
         new_word = i.replace(",", "ing,").replace(".", "ing.")
     else:
