@@ -7,4 +7,4 @@ temperatures = [
 warm_days = list(filter(lambda x: x > 28, temperatures))
 print("Самая высокая температура:", max(warm_days))
 print("Самая низкая температура:", min(warm_days))
-print("Средняя температура:", sum(warm_days))
+print("Средняя температура:", sum(warm_days) // len(warm_days))
