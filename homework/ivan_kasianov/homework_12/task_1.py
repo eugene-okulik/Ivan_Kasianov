@@ -124,7 +124,7 @@ class FlowersBouquet():
         return (
                 f"Букет отсортирован по стоимости "
                 f"от самого дешевого цветка к самому дорогому: "
-                f"{", ".join(new_bouquet)}"
+                f"{', '.join(new_bouquet)}"
                 )
 
     def sort_bouquet_by_stem_length(self):
