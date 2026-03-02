@@ -17,23 +17,23 @@ class Flowers:
 
     def __str__(self):
         return (
-                f'{self.name_flower}, '
-                f'{self.price}, '
-                f'{self.lifetime}, '
-                f'{self.freshness}, '
-                f'{self.color}, '
-                f'{self.stem_length}'
-                )
+            f'{self.name_flower}, '
+            f'{self.price}, '
+            f'{self.lifetime}, '
+            f'{self.freshness}, '
+            f'{self.color}, '
+            f'{self.stem_length}'
+        )
 
     def __repr__(self):
-        return (f''
-                f'{self.name_flower}, '
-                f'{self.price}, '
-                f'{self.lifetime}, '
-                f'{self.freshness}, '
-                f'{self.color}, '
-                f'{self.stem_length}'
-                )
+        return (
+            f'{self.name_flower}, '
+            f'{self.price}, '
+            f'{self.lifetime}, '
+            f'{self.freshness}, '
+            f'{self.color}, '
+            f'{self.stem_length}'
+        )
 
 
 class GardenFlowers(Flowers):
@@ -122,10 +122,10 @@ class FlowersBouquet():
                 f"{flower.price} EUR"
             )
         return (
-                f"Букет отсортирован по стоимости "
-                f"от самого дешевого цветка к самому дорогому: "
-                f"{', '.join(new_bouquet)}"
-                )
+            f"Букет отсортирован по стоимости "
+            f"от самого дешевого цветка к самому дорогому: "
+            f"{', '.join(new_bouquet)}"
+        )
 
     def sort_bouquet_by_stem_length(self):
         new_bouquet = []
@@ -139,10 +139,10 @@ class FlowersBouquet():
                 f"{flower.stem_length} cm"
             )
         return (
-                f"Букет отсортирован по длине стебля "
-                f"от самого короткого цветка к самому длинному: "
-                f"{', '.join(new_bouquet)}"
-                )
+            f"Букет отсортирован по длине стебля "
+            f"от самого короткого цветка к самому длинному: "
+            f"{', '.join(new_bouquet)}"
+        )
 
     def sort_bouquet_by_color(self):
         new_bouquet = []
@@ -157,9 +157,9 @@ class FlowersBouquet():
         for flower in result:
             new_bouquet.append(f"{flower.name_flower}: {flower.freshness}")
         return (
-                f"Букет отсортирован по свежести цветка: "
-                f"{', '.join(new_bouquet)}"
-                )
+            f"Букет отсортирован по свежести цветка: "
+            f"{', '.join(new_bouquet)}"
+        )
 
     def find_flower_by_average_lifetime(self):
         longest_lived_flowers = list(
@@ -174,10 +174,10 @@ class FlowersBouquet():
                 f"{flower.lifetime} час."
             )
         return (
-                f"Список цветов у которых "
-                f"среднее время жизни более 24 часов.: "
-                f"{', '.join(new_longest_lived_flower)}"
-                )
+            f"Список цветов у которых "
+            f"среднее время жизни более 24 часов.: "
+            f"{', '.join(new_longest_lived_flower)}"
+        )
 
 
 rose = GardenFlowers("Rose", 30, 72, "fresh", "yellow", 50)
