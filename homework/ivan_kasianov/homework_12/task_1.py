@@ -114,51 +114,47 @@ class FlowersBouquet():
         )
 
     def sort_bouquet_by_cost(self):
-        new_bouquet = []
-        result = sorted(self.flowers_list, key=lambda flower: flower.price)
-        for flower in result:
-            new_bouquet.append(
-                f"{flower.name_flower}: "
-                f"{flower.price} EUR"
+        return '; '.join(
+            map(
+                str,
+                sorted(
+                    self.flowers_list,
+                    key=lambda flower: flower.price
+                )
             )
-        return (
-            f"Букет отсортирован по стоимости "
-            f"от самого дешевого цветка к самому дорогому: "
-            f"{', '.join(new_bouquet)}"
         )
 
     def sort_bouquet_by_stem_length(self):
-        new_bouquet = []
-        result = sorted(
-            self.flowers_list,
-            key=lambda flower: flower.stem_length
-        )
-        for flower in result:
-            new_bouquet.append(
-                f"{flower.name_flower}: "
-                f"{flower.stem_length} cm"
+        return '; '.join(
+            map(
+                str,
+                sorted(
+                    self.flowers_list,
+                    key=lambda flower: flower.stem_length
+                )
             )
-        return (
-            f"Букет отсортирован по длине стебля "
-            f"от самого короткого цветка к самому длинному: "
-            f"{', '.join(new_bouquet)}"
         )
 
     def sort_bouquet_by_color(self):
-        new_bouquet = []
-        result = sorted(self.flowers_list, key=lambda flower: flower.color)
-        for flower in result:
-            new_bouquet.append(f"{flower.name_flower}: {flower.color}")
-        return f"Букет отсортирован по цвету: {', '.join(new_bouquet)}"
+        return '; '.join(
+            map(
+                str,
+                sorted(
+                    self.flowers_list,
+                    key=lambda flower: flower.color
+                )
+            )
+        )
 
     def sort_bouquet_by_freshness(self):
-        new_bouquet = []
-        result = sorted(self.flowers_list, key=lambda flower: flower.freshness)
-        for flower in result:
-            new_bouquet.append(f"{flower.name_flower}: {flower.freshness}")
-        return (
-            f"Букет отсортирован по свежести цветка: "
-            f"{', '.join(new_bouquet)}"
+        return '; '.join(
+            map(
+                str,
+                sorted(
+                    self.flowers_list,
+                    key=lambda flower: flower.freshness
+                )
+            )
         )
 
     def find_flower_by_average_lifetime(self):
@@ -173,11 +169,7 @@ class FlowersBouquet():
                 f"{flower.name_flower}: "
                 f"{flower.lifetime} час."
             )
-        return (
-            f"Список цветов у которых "
-            f"среднее время жизни более 24 часов.: "
-            f"{', '.join(new_longest_lived_flower)}"
-        )
+        return ', '.join(new_longest_lived_flower)
 
 
 rose = GardenFlowers("Rose", 30, 72, "fresh", "yellow", 50)
@@ -194,8 +186,23 @@ flowers_list = [rose, peony, chamomile, cornflower, orchid]
 
 print(bouquet.bouquet_cost())
 print(bouquet.average_lifetime())
-print(bouquet.sort_bouquet_by_cost())
-print(bouquet.sort_bouquet_by_stem_length())
-print(bouquet.sort_bouquet_by_color())
-print(bouquet.sort_bouquet_by_freshness())
-print(bouquet.find_flower_by_average_lifetime())
+print(
+    f"Цветы в букете отсортированы по стоимости: "
+    f"{bouquet.sort_bouquet_by_cost()}"
+)
+print(
+    f"Цветы в букете отсортированы по длине стебля: "
+    f"{bouquet.sort_bouquet_by_stem_length()}"
+)
+print(
+    f"Цветы в букете отсортированы по цвету: "
+    f"{bouquet.sort_bouquet_by_color()}"
+)
+print(
+    f"Цветы в букете отсортированы по свежести: "
+    f"{bouquet.sort_bouquet_by_freshness()}"
+)
+print(
+    f"Цветы у которых среднее время жизни более 24 часов: "
+    f"{bouquet.find_flower_by_average_lifetime()}"
+)
