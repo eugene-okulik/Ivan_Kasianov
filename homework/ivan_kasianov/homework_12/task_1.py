@@ -114,62 +114,19 @@ class FlowersBouquet():
         )
 
     def sort_bouquet_by_cost(self):
-        return '; '.join(
-            map(
-                str,
-                sorted(
-                    self.flowers_list,
-                    key=lambda flower: flower.price
-                )
-            )
-        )
+        return sorted(self.flowers_list, key=lambda flower: flower.price)
 
     def sort_bouquet_by_stem_length(self):
-        return '; '.join(
-            map(
-                str,
-                sorted(
-                    self.flowers_list,
-                    key=lambda flower: flower.stem_length
-                )
-            )
-        )
+        return sorted(self.flowers_list, key=lambda flower: flower.stem_length)
 
     def sort_bouquet_by_color(self):
-        return '; '.join(
-            map(
-                str,
-                sorted(
-                    self.flowers_list,
-                    key=lambda flower: flower.color
-                )
-            )
-        )
+        return sorted(self.flowers_list, key=lambda flower: flower.color)
 
     def sort_bouquet_by_freshness(self):
-        return '; '.join(
-            map(
-                str,
-                sorted(
-                    self.flowers_list,
-                    key=lambda flower: flower.freshness
-                )
-            )
-        )
+        return sorted(self.flowers_list, key=lambda flower: flower.freshness)
 
     def find_flower_by_average_lifetime(self):
-        longest_lived_flowers = list(
-            filter(
-                lambda flower: flower.lifetime > 24,
-                self.flowers_list)
-        )
-        new_longest_lived_flower = []
-        for flower in longest_lived_flowers:
-            new_longest_lived_flower.append(
-                f"{flower.name_flower}: "
-                f"{flower.lifetime} час."
-            )
-        return ', '.join(new_longest_lived_flower)
+        return filter(lambda flower: flower.lifetime > 24, self.flowers_list)
 
 
 rose = GardenFlowers("Rose", 30, 72, "fresh", "yellow", 50)
@@ -182,27 +139,3 @@ orchid = ExoticFlowers("Orchid", 20, 96, "fresh", "violet", 70)
 
 bouquet = FlowersBouquet([rose, peony, chamomile, cornflower, orchid])
 flowers_list = [rose, peony, chamomile, cornflower, orchid]
-
-
-print(bouquet.bouquet_cost())
-print(bouquet.average_lifetime())
-print(
-    f"Цветы в букете отсортированы по стоимости: "
-    f"{bouquet.sort_bouquet_by_cost()}"
-)
-print(
-    f"Цветы в букете отсортированы по длине стебля: "
-    f"{bouquet.sort_bouquet_by_stem_length()}"
-)
-print(
-    f"Цветы в букете отсортированы по цвету: "
-    f"{bouquet.sort_bouquet_by_color()}"
-)
-print(
-    f"Цветы в букете отсортированы по свежести: "
-    f"{bouquet.sort_bouquet_by_freshness()}"
-)
-print(
-    f"Цветы у которых среднее время жизни более 24 часов: "
-    f"{bouquet.find_flower_by_average_lifetime()}"
-)
