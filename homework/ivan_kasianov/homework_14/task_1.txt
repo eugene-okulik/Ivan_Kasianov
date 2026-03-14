@@ -1,0 +1,26 @@
+INSERT INTO students (name, second_name) VALUES ('Ivan', 'Kasianov')
+
+INSERT INTO books (title, taken_by_student_id) VALUES ('The Hobbit', 22413), ('The little prince', 22413), ('Brave new world', 22413)
+
+INSERT INTO `groups` (title, start_date, end_date) VALUES ('Python AQA 2026', 'feb 2026', 'apr 2026')
+
+UPDATE students SET group_id = 22102 WHERE id = 22413
+
+INSERT INTO subjects (title) VALUES ('Python for AQA'), ('SQL for AQA')
+
+INSERT INTO lessons (title, subject_id) VALUES ('Python for AQA lesson 1', 14099), ('Python for AQA lesson 2', 14099), ('SQL for AQA lesson 1', 14100), ('SQL for AQA lesson 2', 14100)
+
+INSERT INTO marks (value, lesson_id, student_id) VALUES (5, 75326, 22413), (4, 75325, 22413), (5, 75324, 22413), (4, 75323, 22413)
+
+SELECT * FROM marks WHERE student_id = 22413
+
+SELECT * FROM books WHERE taken_by_student_id = 22413
+
+SELECT s.name, s.second_name, g.title, b.title, m.value, l.title, sub.title
+FROM students s
+join `groups` g on s.group_id = g.id
+join books b on s.id = b.taken_by_student_id
+join marks m on s.id = m.student_id
+join lessons l on m.lesson_id  = l.id
+join subjects sub on l.subject_id = sub.id
+WHERE s.id = 22413
