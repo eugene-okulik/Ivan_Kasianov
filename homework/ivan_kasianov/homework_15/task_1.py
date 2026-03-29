@@ -57,37 +57,40 @@ WHERE id = %s
 values = (group_id, student_id)
 cursor.execute(query_update_students_group, values)
 
-query_create_subject = """
-INSERT INTO subjects (title)
-VALUES (%s)
-"""
-subject_1_title = "Python for AQA"
-cursor.execute(query_create_subject, (subject_1_title,))
-subject_1_id = cursor.lastrowid
 
-subject_2_title = "SQL for AQA"
-cursor.execute(query_create_subject, (subject_2_title,))
-subject_2_id = cursor.lastrowid
+def query_create_subject(subject_title):
+    query = "INSERT INTO subjects (title) VALUES (%s)"
+    cursor.execute(query, (subject_title,))
+    return cursor.lastrowid
 
-query_create_lesson = """
-INSERT INTO lessons (title, subject_id)
-VALUES (%s, %s)
-"""
-lesson_python_1_title = "Python for AQA lesson 1"
-cursor.execute(query_create_lesson, (lesson_python_1_title, subject_1_id))
-lesson_python_1_id = cursor.lastrowid
 
-lesson_python_2_title = "Python for AQA lesson 2"
-cursor.execute(query_create_lesson, (lesson_python_2_title, subject_1_id))
-lesson_python_2_id = cursor.lastrowid
+subjects = ["Python for AQA", "SQL for AQA"]
 
-lesson_sql_1_title = "SQL for AQA lesson 1"
-cursor.execute(query_create_lesson, (lesson_sql_1_title, subject_2_id))
-lesson_sql_1_id = cursor.lastrowid
+subject_ids = []
+for subject in subjects:
+    subject_ids.append(query_create_subject(subject))
 
-lesson_sql_2_title = "SQL for AQA lesson 2"
-cursor.execute(query_create_lesson, (lesson_sql_2_title, subject_2_id))
-lesson_sql_2_id = cursor.lastrowid
+
+def query_create_lesson(title, subject_id):
+    query = "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)"
+    cursor.execute(query, (title, subject_id))
+    return cursor.lastrowid
+
+
+lessons = [
+    ("Python for AQA lesson 1", subject_ids[0]),
+    ("Python for AQA lesson 2", subject_ids[0]),
+    ("SQL for AQA lesson 1", subject_ids[1]),
+    ("SQL for AQA lesson 2", subject_ids[1]),
+]
+
+lesson_ids = []
+
+for lesson in lessons:
+    title = lesson[0]
+    subject_id = lesson[1]
+    lesson_id = query_create_lesson(title, subject_id)
+    lesson_ids.append(lesson_id)
 
 query_create_marks = """
 INSERT INTO marks (value, lesson_id, student_id)
@@ -98,10 +101,10 @@ mark_2 = 4
 mark_3 = 5
 mark_4 = 5
 values = [
-    (mark_1, lesson_python_1_id, student_id),
-    (mark_2, lesson_python_2_id, student_id),
-    (mark_3, lesson_sql_1_id, student_id),
-    (mark_4, lesson_sql_2_id, student_id)
+    (mark_1, lesson_ids[0], student_id),
+    (mark_2, lesson_ids[1], student_id),
+    (mark_3, lesson_ids[2], student_id),
+    (mark_4, lesson_ids[3], student_id)
 ]
 cursor.executemany(query_create_marks, values)
 
