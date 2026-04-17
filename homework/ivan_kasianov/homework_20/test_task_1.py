@@ -2,7 +2,6 @@ import requests
 import pytest
 import allure
 
-
 test_body_objects = [
     (
         {
@@ -86,7 +85,7 @@ def test_get_all_objects(start_and_finish_test_run, before_and_after_test):
         )
     with allure.step("Checking that all objects have been received"):
         assert len(response.json()["data"]) != 0, (
-        "The objects have not yet been created"
+            "The objects have not yet been created"
         )
 
 
@@ -99,9 +98,9 @@ def test_get_one_object(new_object, before_and_after_test):
         response = requests.get(
             f"http://objapi.course.qa-practice.com/object/{new_object}"
         )
-    with allure.step(f"Checking that status code is 200"):
+    with allure.step("Checking that status code is 200"):
         assert response.status_code == 200, (
-            f"Expected 200, "
+            "Expected 200, "
             f"but got {response.status_code}"
         )
     with allure.step(f"Check that object id is {new_object}"):
