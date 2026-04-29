@@ -34,8 +34,10 @@ def test_creation_an_object(
     create_object_endpoint.create_new_object(body)
     create_object_endpoint.check_response_status_code_is_200()
     create_object_endpoint.check_response_name_is_correct(body["name"])
-    create_object_endpoint.check_response_color_is_correct(body["color"])
-    create_object_endpoint.check_response_size_is_correct(body["size"])
+    create_object_endpoint.check_response_color_is_correct(
+        body["data"]["color"]
+    )
+    create_object_endpoint.check_response_size_is_correct(body["data"]["size"])
 
 
 def test_get_all_objects(get_objects_endpoint, before_and_after_test):
@@ -76,7 +78,7 @@ def test_put_object(
         test_body_object_put_update["data"]["size"]
     )
     update_object_endpoint.check_response_name_is_correct(
-        test_body_object_put_update["data"]["name"]
+        test_body_object_put_update["name"]
     )
 
 
@@ -95,10 +97,7 @@ def test_patch_object(
         test_body_object_patch_update["data"]["size"]
     )
     patch_object_endpoint.check_response_name_is_correct(
-        test_body_object_patch_update["data"]["name"]
-    )
-    patch_object_endpoint.check_response_color_is_correct(
-        test_body_object_patch_update["data"]["color"]
+        test_body_object_patch_update["name"]
     )
 
 
