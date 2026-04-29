@@ -8,8 +8,47 @@ from homework_22.test_api_ikasianov.endpoints.get_object import GetObject
 
 
 @pytest.fixture()
+def test_body_object():
+    return {
+        "name": "First object",
+        "data": {
+            "color": "black",
+            "size": "small"
+        }
+    }
+
+
+@pytest.fixture()
+def test_body_object_put_update():
+    return {
+        "name": "First object",
+        "data": {
+            "color": "black-UPD",
+            "size": "small-UPD"
+        }
+    }
+
+
+@pytest.fixture()
+def test_body_object_patch_update():
+    return {
+        "name": "First object",
+        "data": {
+            "size": "small-UPD"
+        }
+    }
+
+
+@pytest.fixture()
 def create_object_endpoint():
     return CreateObject()
+
+
+@pytest.fixture()
+def get_object_id(create_object_endpoint, test_body_object):
+    create_object_endpoint.create_new_object(test_body_object)
+    object_id = create_object_endpoint.returned_object_id()
+    return object_id
 
 
 @pytest.fixture()
