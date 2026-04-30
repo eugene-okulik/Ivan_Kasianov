@@ -22,12 +22,6 @@ class Endpoint:
             self.response_json["data"]["size"] == size
         ), "The size has not been updated"
 
-    @allure.step("Check that object size is small-UPD")
-    def check_response_size_upd_is_correct(self, size):
-        assert (
-            self.response_json["data"]["size"] == size
-        ), "The size has not been updated"
-
     @allure.step("Checking that all objects have been received")
     def check_response_data_length_is_correct(self):
         assert (

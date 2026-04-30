@@ -45,10 +45,11 @@ def create_object_endpoint():
 
 
 @pytest.fixture()
-def get_object_id(create_object_endpoint, test_body_object):
+def get_object_id(create_object_endpoint, delete_object_endpoint, test_body_object):
     create_object_endpoint.create_new_object(test_body_object)
     object_id = create_object_endpoint.returned_object_id()
-    return object_id
+    yield object_id
+    delete_object_endpoint.delete_object(object_id)
 
 
 @pytest.fixture()

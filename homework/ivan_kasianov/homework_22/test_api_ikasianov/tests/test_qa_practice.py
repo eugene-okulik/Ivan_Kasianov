@@ -93,7 +93,7 @@ def test_patch_object(
         get_object_id
     )
     patch_object_endpoint.check_response_status_code_is_200()
-    patch_object_endpoint.check_response_size_upd_is_correct(
+    patch_object_endpoint.check_response_size_is_correct(
         test_body_object_patch_update["data"]["size"]
     )
     patch_object_endpoint.check_response_name_is_correct(
