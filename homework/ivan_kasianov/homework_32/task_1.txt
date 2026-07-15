@@ -1,0 +1,20 @@
+Go to first line in file:                    g или  < или последовательное нажатие ESC и <
+Go to last line in file:                     G  или > или  последовательное нажатие ESC и >
+Forward one window:                          f  или Ctrl+F  или Ctrl+V или SPACE
+Forward one line:                            e  или Ctrl+E или j или Ctrl+N  или Enter
+Backward one line:                           y  или  Ctrl+Y или k или Ctrl+K или Ctrl+P
+Search forward for matching line:            / и в строке ввода ввести искомое слово
+Search backward for matching line:	         ? и в строке ввода ввести искомое слово
+Repeat previous search:			             n
+Repeat previous search in reverse direction: N
+
+
+/dev/null - символьное устройство
+/dev/zero - символьное устройство
+/dev/sda - нет такого файла или директории
+/dev/tty - символьное устройство
+/root - каталог
+/etc/passwd - обычный файл
+/proc/mounts - символьная ссылка
+/bin/ls - обычный файл
+/bin/zcat - обычный файл
