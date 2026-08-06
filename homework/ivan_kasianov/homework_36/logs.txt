@@ -1,0 +1,87 @@
+Started by user ivan_kasianov
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/qa_practice_api
+[qa_practice_api] $ /bin/sh -xe /tmp/jenkins5272133365196114824.sh
++ cd qa-practice
++ git pull
+Already up to date.
++ export AUTH_NAME=Ivan
++ python3 -m venv venv
++ ./venv/bin/pip install -r requirements.txt
+Requirement already satisfied: allure-pytest==2.16.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 1)) (2.16.0)
+Requirement already satisfied: allure-python-commons==2.16.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 2)) (2.16.0)
+Requirement already satisfied: attrs==26.1.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 3)) (26.1.0)
+Requirement already satisfied: certifi==2026.4.22 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 4)) (2026.4.22)
+Requirement already satisfied: charset-normalizer==3.4.7 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 5)) (3.4.7)
+Requirement already satisfied: idna==3.13 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 6)) (3.13)
+Requirement already satisfied: iniconfig==2.3.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 7)) (2.3.0)
+Requirement already satisfied: packaging==26.2 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 8)) (26.2)
+Requirement already satisfied: pluggy==1.6.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 9)) (1.6.0)
+Requirement already satisfied: Pygments==2.20.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 10)) (2.20.0)
+Requirement already satisfied: pytest==9.0.3 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 11)) (9.0.3)
+Requirement already satisfied: python-dotenv==1.2.2 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 12)) (1.2.2)
+Requirement already satisfied: requests==2.33.1 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 13)) (2.33.1)
+Requirement already satisfied: urllib3==2.6.3 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 14)) (2.6.3)
++ ./venv/bin/pytest -v
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0 -- /var/jenkins_home/workspace/qa_practice_api/qa-practice/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /var/jenkins_home/workspace/qa_practice_api/qa-practice
+configfile: pytest.ini
+plugins: allure-pytest-2.16.0
+collecting ... collected 51 items
+
+tests/test_memes.py::test_post_meme PASSED                               [  1%]
+tests/test_memes.py::test_post_meme_with_negative_payload[negative_payload0] PASSED [  3%]
+tests/test_memes.py::test_post_meme_with_negative_payload[negative_payload1] PASSED [  5%]
+tests/test_memes.py::test_post_meme_with_negative_payload[negative_payload2] PASSED [  7%]
+tests/test_memes.py::test_post_meme_with_negative_payload[negative_payload3] PASSED [  9%]
+tests/test_memes.py::test_post_meme_with_negative_payload[negative_payload4] PASSED [ 11%]
+tests/test_memes.py::test_get_one_meme PASSED                            [ 13%]
+tests/test_memes.py::test_get_not_exist_meme[text_id] PASSED             [ 15%]
+tests/test_memes.py::test_get_not_exist_meme[9999999999] PASSED          [ 17%]
+tests/test_memes.py::test_get_not_exist_meme[0] PASSED                   [ 19%]
+tests/test_memes.py::test_get_not_exist_meme[-1] PASSED                  [ 21%]
+tests/test_memes.py::test_get_not_exist_meme[2.3] PASSED                 [ 23%]
+tests/test_memes.py::test_get_not_exist_meme[ ] PASSED                   [ 25%]
+tests/test_memes.py::test_get_memes PASSED                               [ 27%]
+tests/test_memes.py::test_get_memes_with_wrong_url[memes0] PASSED        [ 29%]
+tests/test_memes.py::test_get_memes_with_wrong_url[memes1] PASSED        [ 31%]
+tests/test_memes.py::test_get_memes_with_wrong_url[meme/] PASSED         [ 33%]
+tests/test_memes.py::test_get_memes_with_wrong_url[MEME] PASSED          [ 35%]
+tests/test_memes.py::test_get_memes_with_wrong_url[random_page] PASSED   [ 37%]
+tests/test_memes.py::test_update_meme PASSED                             [ 39%]
+tests/test_memes.py::test_update_meme_with_negative_payload[negative_payload_for_update0] PASSED [ 41%]
+tests/test_memes.py::test_update_meme_with_negative_payload[negative_payload_for_update1] PASSED [ 43%]
+tests/test_memes.py::test_update_meme_with_negative_payload[negative_payload_for_update2] PASSED [ 45%]
+tests/test_memes.py::test_update_meme_with_negative_payload[negative_payload_for_update3] PASSED [ 47%]
+tests/test_memes.py::test_update_meme_with_negative_payload[negative_payload_for_update4] PASSED [ 49%]
+tests/test_memes.py::test_delete_meme PASSED                             [ 50%]
+tests/test_memes.py::test_delete_meme_with_invalid_id[text_id] PASSED    [ 52%]
+tests/test_memes.py::test_delete_meme_with_invalid_id[9999999999] PASSED [ 54%]
+tests/test_memes.py::test_delete_meme_with_invalid_id[0] PASSED          [ 56%]
+tests/test_memes.py::test_delete_meme_with_invalid_id[-1] PASSED         [ 58%]
+tests/test_memes.py::test_delete_meme_with_invalid_id[2.3] PASSED        [ 60%]
+tests/test_memes.py::test_delete_meme_with_invalid_id[ ] PASSED          [ 62%]
+tests/test_memes.py::test_endpoints_without_aut_token[GET-meme-None] PASSED [ 64%]
+tests/test_memes.py::test_endpoints_without_aut_token[GET-meme/100-None] PASSED [ 66%]
+tests/test_memes.py::test_endpoints_without_aut_token[POST-meme-payload2] PASSED [ 68%]
+tests/test_memes.py::test_endpoints_without_aut_token[PUT-meme/100-payload3] PASSED [ 70%]
+tests/test_memes.py::test_endpoints_without_aut_token[DELETE-meme/100-None] PASSED [ 72%]
+tests/test_memes.py::test_successful_auth PASSED                         [ 74%]
+tests/test_memes.py::test_auth_with_invalid_payload[invalid_auth_payload0] PASSED [ 76%]
+tests/test_memes.py::test_auth_with_invalid_payload[invalid_auth_payload1] PASSED [ 78%]
+tests/test_memes.py::test_auth_with_invalid_payload[invalid_auth_payload2] PASSED [ 80%]
+tests/test_memes.py::test_auth_with_invalid_payload[invalid_auth_payload3] PASSED [ 82%]
+tests/test_memes.py::test_auth_with_invalid_payload[invalid_auth_payload4] PASSED [ 84%]
+tests/test_memes.py::test_auth_with_invalid_payload[invalid_auth_payload5] PASSED [ 86%]
+tests/test_memes.py::test_successful_token_validation PASSED             [ 88%]
+tests/test_memes.py::test_unsuccessful_token_validation[text_token] PASSED [ 90%]
+tests/test_memes.py::test_unsuccessful_token_validation[9999999999] PASSED [ 92%]
+tests/test_memes.py::test_unsuccessful_token_validation[0] PASSED        [ 94%]
+tests/test_memes.py::test_unsuccessful_token_validation[-1] PASSED       [ 96%]
+tests/test_memes.py::test_unsuccessful_token_validation[2.3] PASSED      [ 98%]
+tests/test_memes.py::test_unsuccessful_token_validation[None] PASSED     [100%]
+
+============================== 51 passed in 6.10s ==============================
+Finished: SUCCESS
